@@ -1043,6 +1043,63 @@
                 transform: scale(1.05);
             }
         }
+
+
+        /* Estilos para as Modais */
+        .viva-modal {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .viva-modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .viva-close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .viva-close:hover {
+                color: #000;
+            }
+
+        .viva-modal-body {
+            margin-top: 20px;
+            text-align: left;
+            color: #444;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .viva-modal h2 {
+            color: #1E3A8A;
+            font-size: 22px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
     </style>
 </head>
 <body>
@@ -1366,6 +1423,57 @@
         </div>
     </section>
 
+    <div id="modal-privacidade" class="viva-modal">
+        <div class="viva-modal-content">
+            <span class="viva-close" onclick="fecharModal('modal-privacidade')">&times;</span>
+            <h2>Política de Privacidade</h2>
+            <div class="viva-modal-body">
+                <p><strong>1. Introdução:</strong> A sua privacidade é prioritária. Esta política detalha como o VivaCondo coleta, usa e protege suas informações pessoais em conformidade com a LGPD.</p>
+
+                <p><strong>2. Coleta de Dados:</strong> Coletamos informações fornecidas diretamente por você ou pela administração do condomínio, incluindo nome completo, CPF (para validação), unidade/bloco, e-mail e número de telefone.</p>
+
+                <p>
+                    <strong>3. Finalidade do Tratamento:</strong> Seus dados são utilizados para:
+                    <br>• Identificação e controle de acesso ao sistema;
+                    <br>• Envio de comunicados importantes da administração;
+                    <br>• Gestão de reservas de áreas comuns e registro de ocorrências;
+                    <br>• Melhoria da experiência do usuário no aplicativo.
+                </p>
+
+                <p><strong>4. Segurança e Armazenamento:</strong> Os dados são armazenados em servidores seguros com criptografia. Implementamos medidas técnicas para prevenir acessos não autorizados ou vazamentos.</p>
+
+                <p><strong>5. Compartilhamento:</strong> O VivaCondo não comercializa seus dados. O compartilhamento ocorre apenas com a administração do seu condomínio para fins operacionais ou por obrigatoriedade legal.</p>
+
+                <p><strong>6. Seus Direitos:</strong> Você tem o direito de acessar, corrigir ou solicitar a exclusão de seus dados, enviando uma solicitação através do suporte oficial do sistema.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-termos" class="viva-modal">
+        <div class="viva-modal-content">
+            <span class="viva-close" onclick="fecharModal('modal-termos')">&times;</span>
+            <h2>Termos de Uso</h2>
+            <div class="viva-modal-body">
+                <p><strong>1. Aceitação dos Termos:</strong> Ao acessar o VivaCondo, você concorda integralmente com as condições aqui estabelecidas. Este sistema é uma ferramenta de auxílio à gestão condominial.</p>
+
+                <p><strong>2. Cadastro e Acesso:</strong> O acesso é restrito a moradores, proprietários e funcionários autorizados. Você é responsável por manter a confidencialidade de sua senha e por todas as atividades em sua conta.</p>
+
+                <p>
+                    <strong>3. Regras de Conduta:</strong> Ao utilizar as ferramentas de mural de avisos ou chat, o usuário compromete-se a:
+                    <br>• Manter o respeito e a urbanidade com os demais moradores;
+                    <br>• Não divulgar conteúdos ofensivos, ilegais ou publicitários sem autorização;
+                    <br>• Utilizar o sistema estritamente para assuntos relacionados ao condomínio.
+                </p>
+
+                <p><strong>4. Reservas de Áreas Comuns:</strong> O uso do sistema para reservas deve seguir o Regimento Interno do condomínio. O cancelamento deve ser feito com a antecedência prevista nas normas internas.</p>
+
+                <p><strong>5. Limitação de Responsabilidade:</strong> O VivaCondo busca manter o sistema operando 24h, mas não se responsabiliza por interrupções temporárias decorrentes de falhas na internet ou manutenções técnicas necessárias.</p>
+
+                <p><strong>6. Atualizações:</strong> Estes termos podem ser atualizados periodicamente para refletir melhorias no sistema ou mudanças na legislação.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer>
         <div class="footer-inner">
@@ -1388,8 +1496,8 @@
                 <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="javascript:void(0)" onclick="abrirModal('modal-privacidade')">Política de Privacidade</a></li>
+                        <li><a href="javascript:void(0)" onclick="abrirModal('modal-termos')">Termos de Uso</a></li>
                     </ul>
                 </div>
             </div>
@@ -1402,6 +1510,24 @@
             </div>
         </div>
     </footer>
+    <script>
+        function abrirModal(id) {
+            document.getElementById(id).style.display = "block";
+            document.body.style.overflow = "hidden"; // Trava o scroll da página
+        }
 
+        function fecharModal(id) {
+            document.getElementById(id).style.display = "none";
+            document.body.style.overflow = "auto"; // Libera o scroll
+        }
+
+        // Fecha se clicar fora da caixa branca
+        window.onclick = function (event) {
+            if (event.target.className === 'viva-modal') {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+    </script>
 </body>
 </html>
