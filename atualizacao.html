@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizações — VivaCondo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --blue: #1E3A8A;
+            --blue-md: #2563EB;
+            --blue-lt: #EFF6FF;
+            --green: #059669;
+            --green-lt: #ECFDF5;
+            --amber: #D97706;
+            --amber-lt: #FFFBEB;
+            --purple: #7C3AED;
+            --purple-lt: #F5F3FF;
+            --red: #DC2626;
+            --red-lt: #FEF2F2;
+            --bg: #F1F5F9;
+            --surface: #FFFFFF;
+            --text: #1E293B;
+            --muted: #64748B;
+            --border: #E2E8F0;
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 40px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAVBAR ── */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 999;
+            background: rgba(30,58,138,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 38px; height: 38px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; color: #fff;
+        }
+
+        .logo-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-name span { color: rgba(255,255,255,0.55); font-weight: 400; }
+
+        nav { display: flex; align-items: center; gap: 2rem; }
+
+        nav a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color .2s;
+        }
+
+        nav a:hover { color: #fff; }
+
+        .nav-cta {
+            background: var(--green);
+            color: #fff !important;
+            padding: 9px 20px;
+            border-radius: var(--radius-sm);
+            font-weight: 700 !important;
+            font-size: 0.85rem !important;
+            white-space: nowrap;
+            transition: opacity .2s !important;
+        }
+
+        .nav-cta:hover { opacity: 0.88; }
+
+        /* ── HERO ── */
+        .hero {
+            background: var(--blue);
+            padding: 110px 2rem 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px; right: -120px;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: rgba(37,99,235,0.3);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -80px;
+            width: 350px; height: 350px;
+            border-radius: 50%;
+            background: rgba(5,150,105,0.15);
+        }
+
+        .hero-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+            letter-spacing: 0.3px;
+        }
+
+        .hero-badge i { color: #34D399; font-size: 0.7rem; }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 em { font-style: normal; color: #93C5FD; }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.72);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            color: var(--blue);
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            font-weight: 800;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform .25s;
+        }
+
+        .btn-primary:hover { transform: translateY(-2px); }
+
+        /* ── SEÇÃO PRINCIPAL ── */
+        .section { padding: 88px 2rem; }
+
+        .section-inner {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--blue-lt);
+            color: var(--blue);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 800;
+            color: var(--blue);
+            line-height: 1.2;
+            margin-bottom: 14px;
+            letter-spacing: -0.4px;
+        }
+
+        .section-sub {
+            color: var(--muted);
+            font-size: 1rem;
+            max-width: 520px;
+            line-height: 1.7;
+            margin-bottom: 48px;
+        }
+
+        /* ── VERSÃO ATUAL — DESTAQUE ── */
+        .version-highlight {
+            background: var(--blue);
+            border-radius: var(--radius-lg);
+            padding: 36px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .version-highlight-left { display: flex; align-items: center; gap: 20px; }
+
+        .version-badge-big {
+            width: 64px; height: 64px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; color: #fff;
+            flex-shrink: 0;
+        }
+
+        .version-info h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .version-info p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .version-tag {
+            background: rgba(52,211,153,0.2);
+            border: 1px solid rgba(52,211,153,0.4);
+            color: #34D399;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #fff;
+            color: var(--blue);
+            padding: 16px 28px;
+            border-radius: var(--radius-md);
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: transform .2s;
+            white-space: nowrap;
+        }
+
+        .btn-download:hover { transform: translateY(-2px); }
+
+        /* ── CARDS DE MUDANÇAS ── */
+        .changes-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 56px;
+        }
+
+        .change-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            transition: box-shadow .25s, transform .25s;
+        }
+
+        .change-card:hover {
+            box-shadow: 0 8px 28px rgba(30,58,138,0.08);
+            transform: translateY(-2px);
+        }
+
+        .change-icon {
+            width: 48px; height: 48px;
+            min-width: 48px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .change-icon.melhoria { background: var(--blue-lt); color: var(--blue); }
+        .change-icon.novo     { background: var(--green-lt); color: var(--green); }
+        .change-icon.correcao { background: var(--red-lt); color: var(--red); }
+
+        .change-body { flex: 1; }
+
+        .change-body h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .change-body p {
+            font-size: 0.875rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .change-pill {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 50px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .change-pill.melhoria { background: var(--blue-lt); color: var(--blue); }
+        .change-pill.novo     { background: var(--green-lt); color: var(--green); }
+        .change-pill.correcao { background: var(--red-lt); color: var(--red); }
+
+        /* ── PASSOS DE INSTALAÇÃO ── */
+        .install-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 56px;
+        }
+
+        .install-block h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--blue);
+            margin-bottom: 8px;
+        }
+
+        .install-block > p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .steps-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .steps-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .step-circle {
+            width: 30px; height: 30px;
+            min-width: 30px;
+            border-radius: 50%;
+            background: var(--blue-lt);
+            color: var(--blue);
+            font-size: 0.78rem;
+            font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+            margin-top: 1px;
+        }
+
+        .steps-list li span {
+            line-height: 1.65;
+            color: var(--muted);
+        }
+
+        .steps-list li strong { color: var(--text); font-weight: 600; }
+
+        /* ── AVISO AMBER ── */
+        .notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: var(--amber-lt);
+            border: 1px solid #FDE68A;
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            margin-bottom: 56px;
+        }
+
+        .notice i { color: var(--amber); font-size: 1.1rem; margin-top: 2px; }
+
+        .notice p { font-size: 0.875rem; color: #92400E; line-height: 1.6; }
+        .notice p strong { font-weight: 700; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--blue);
+            color: rgba(255,255,255,0.55);
+            padding: 48px 2rem 32px;
+        }
+
+        .footer-inner { max-width: 1160px; margin: 0 auto; }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-brand { display: flex; flex-direction: column; gap: 12px; }
+
+        .footer-logo { display: flex; align-items: center; gap: 10px; }
+
+        .footer-logo-mark {
+            width: 34px; height: 34px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 15px; color: #fff;
+        }
+
+        .footer-logo-name { font-size: 1.1rem; font-weight: 800; color: #fff; }
+
+        .footer-tagline {
+            font-size: 0.83rem;
+            color: rgba(255,255,255,0.45);
+            max-width: 220px;
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 14px;
+        }
+
+        .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+        .footer-links a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
+            transition: color .2s;
+        }
+
+        .footer-links a:hover { color: #fff; }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.55);
+            font-size: 0.72rem;
+            padding: 5px 12px;
+            border-radius: 50px;
+        }
+
+        .footer-badge i { color: #34D399; }
+
+        /* ── RESPONSIVO ── */
+        @media (max-width: 768px) {
+            nav a:not(.nav-cta) { display: none; }
+            .hero { padding: 96px 1.5rem 52px; }
+            .section { padding: 64px 1.5rem; }
+            .version-highlight { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+            .install-block { padding: 28px 24px; }
+            .change-pill { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <div class="logo-mark"><i class="fas fa-building"></i></div>
+                <span class="logo-name">Viva<span>Condo</span></span>
+            </a>
+            <nav>
+                <a href="/">Início</a>
+                <a href="/#recursos">Recursos</a>
+                <a href="/#suporte">Suporte</a>
+                <a href="/#instalar" class="nav-cta">Baixar App</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">
+                <i class="fas fa-circle"></i>
+                Novidades do Aplicativo
+            </div>
+            <h1>Sempre <em>melhorando</em><br>para você</h1>
+            <p>Acompanhe aqui as últimas atualizações do VivaCondo — melhorias, correções e novos recursos disponíveis para instalação.</p>
+            <a href="#baixar" class="btn-primary">
+                <i class="fas fa-download"></i>
+                Baixar Versão Atual
+            </a>
+        </div>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <section class="section">
+        <div class="section-inner">
+
+            <div class="section-label"><i class="fas fa-tag"></i> Versão Atual</div>
+            <h2 class="section-title">O que há de novo</h2>
+            <p class="section-sub">Confira as mudanças desta versão e instale a atualização para garantir o melhor funcionamento do app.</p>
+
+            <!-- DESTAQUE DA VERSÃO -->
+            <div class="version-highlight" id="baixar">
+                <div class="version-highlight-left">
+                    <div class="version-badge-big"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="version-info">
+                        <h3>VivaCondo v1.1.0</h3>
+                        <p>Lançada em Abril de 2025 · Android</p>
+                        <div class="version-tag" style="display:inline-block; margin-top:8px;">Versão Estável</div>
+                    </div>
+                </div>
+                <a href="https://vivacondo.vercel.app/" class="btn-download">
+                    <i class="fas fa-download"></i>
+                    Baixar Atualização
+                </a>
+            </div>
+
+            <!-- AVISO -->
+            <div class="notice">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>Atenção:</strong> Antes de instalar, certifique-se de que seu dispositivo permite a instalação de aplicativos de fontes externas. Em caso de dúvida, procure a administração do condomínio para ajuda presencial.</p>
+            </div>
+
+            <!-- MUDANÇAS DESTA VERSÃO -->
+            <div class="section-label"><i class="fas fa-list-check"></i> Mudanças desta versão</div>
+            <h2 class="section-title" style="margin-bottom: 32px;">O que foi atualizado</h2>
+
+            <div class="changes-grid">
+
+                <div class="change-card">
+                    <div class="change-icon melhoria"><i class="fas fa-shield-halved"></i></div>
+                    <div class="change-body">
+                        <h4>Verificação de versão obrigatória</h4>
+                        <p>O app agora verifica automaticamente se está atualizado ao ser aberto. Quando houver uma nova versão obrigatória, o acesso será bloqueado até a instalação, garantindo que todos os moradores usem sempre a versão mais segura.</p>
+                    </div>
+                    <span class="change-pill melhoria">Melhoria</span>
+                </div>
+
+                <div class="change-card">
+                    <div class="change-icon novo"><i class="fas fa-bell"></i></div>
+                    <div class="change-body">
+                        <h4>Alerta de atualização opcional</h4>
+                        <p>Quando uma nova versão está disponível mas não é obrigatória, o app exibe um aviso discreto permitindo que o morador escolha atualizar agora ou deixar para depois, sem interromper o uso.</p>
+                    </div>
+                    <span class="change-pill novo">Novo</span>
+                </div>
+
+                <div class="change-card">
+                    <div class="change-icon melhoria"><i class="fas fa-gauge-high"></i></div>
+                    <div class="change-body">
+                        <h4>Melhorias gerais de desempenho</h4>
+                        <p>Otimizações internas que tornam a navegação entre telas mais fluida e reduzem o tempo de carregamento em dispositivos com conexão mais lenta.</p>
+                    </div>
+                    <span class="change-pill melhoria">Melhoria</span>
+                </div>
+
+                <div class="change-card">
+                    <div class="change-icon correcao"><i class="fas fa-bug"></i></div>
+                    <div class="change-body">
+                        <h4>Correções de estabilidade</h4>
+                        <p>Correção de falhas pontuais relatadas por moradores nas versões anteriores, garantindo uma experiência mais estável no dia a dia.</p>
+                    </div>
+                    <span class="change-pill correcao">Correção</span>
+                </div>
+
+            </div>
+
+            <!-- COMO INSTALAR -->
+            <div class="install-block">
+                <h3><i class="fas fa-mobile-alt" style="margin-right:10px; color:var(--blue-md);"></i>Como instalar a atualização</h3>
+                <p>Siga os passos abaixo para substituir a versão anterior pelo novo APK.</p>
+                <ul class="steps-list">
+                    <li>
+                        <div class="step-circle">1</div>
+                        <span><strong>Baixe o novo APK</strong> usando o botão acima nesta página.</span>
+                    </li>
+                    <li>
+                        <div class="step-circle">2</div>
+                        <span><strong>Abra o arquivo</strong> na pasta de Downloads do seu celular.</span>
+                    </li>
+                    <li>
+                        <div class="step-circle">3</div>
+                        <span><strong>Toque em "Instalar"</strong> — o Android substituirá automaticamente a versão antiga. Seus dados de acesso serão mantidos.</span>
+                    </li>
+                    <li>
+                        <div class="step-circle">4</div>
+                        <span><strong>Abra o VivaCondo</strong> normalmente e confirme que está na versão mais recente.</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-mark"><i class="fas fa-building"></i></div>
+                        <span class="footer-logo-name">VivaCondo</span>
+                    </div>
+                    <p class="footer-tagline">O aplicativo oficial do condomínio. Conectando moradores e administração.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="/">Início</a></li>
+                        <li><a href="/#recursos">Recursos</a></li>
+                        <li><a href="/#instalar">Como instalar</a></li>
+                        <li><a href="/#suporte">Suporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/">Política de Privacidade</a></li>
+                        <li><a href="/">Termos de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VivaCondo. Todos os direitos reservados.</p>
+                <div class="footer-badge">
+                    <i class="fas fa-circle"></i>
+                    Site oficial e seguro
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
