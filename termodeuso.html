@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso — VivaCondo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --blue: #1E3A8A;
+            --blue-md: #2563EB;
+            --blue-lt: #EFF6FF;
+            --bg: #F1F5F9;
+            --surface: #FFFFFF;
+            --text: #1E293B;
+            --muted: #64748B;
+            --border: #E2E8F0;
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 999;
+            background: rgba(30,58,138,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .nav-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 10px; text-decoration: none;
+        }
+        .logo-mark {
+            width: 38px; height: 38px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; color: #fff;
+        }
+        .logo-name {
+            font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.5px;
+        }
+        .logo-name span { color: rgba(255,255,255,0.55); font-weight: 400; }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.875rem; font-weight: 500;
+            transition: color .2s;
+        }
+        .back-btn:hover { color: #fff; }
+        .page-wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 108px 2rem 80px;
+        }
+        .page-header {
+            background: var(--blue);
+            border-radius: var(--radius-lg);
+            padding: 40px 40px 36px;
+            margin-bottom: 32px;
+            color: #fff;
+        }
+        .page-header-label {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9);
+            font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.8px; text-transform: uppercase;
+            padding: 5px 12px; border-radius: 50px;
+            margin-bottom: 20px;
+        }
+        .page-header h1 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800; line-height: 1.2;
+            letter-spacing: -0.4px; margin-bottom: 10px;
+        }
+        .page-header p {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.9rem; line-height: 1.7;
+        }
+        .content-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+        }
+        .section-block {
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-block:last-child {
+            margin-bottom: 0; padding-bottom: 0; border-bottom: none;
+        }
+        .section-block h2 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 12px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-block h2 .num {
+            width: 28px; height: 28px; min-width: 28px;
+            background: var(--blue-lt);
+            color: var(--blue);
+            border-radius: 8px;
+            font-size: 0.8rem; font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .section-block p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.75;
+        }
+        .section-block ul {
+            list-style: none;
+            margin-top: 10px;
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        .section-block ul li {
+            display: flex; align-items: flex-start; gap: 10px;
+            color: var(--muted); font-size: 0.9rem; line-height: 1.65;
+        }
+        .section-block ul li::before {
+            content: '';
+            width: 6px; height: 6px; min-width: 6px;
+            border-radius: 50%;
+            background: var(--blue);
+            margin-top: 8px;
+        }
+        .footer-legal {
+            text-align: center;
+            margin-top: 32px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+        .footer-legal a {
+            color: var(--blue); text-decoration: none; font-weight: 600;
+        }
+        .footer-legal a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .page-wrap { padding: 96px 1rem 60px; }
+            .page-header { padding: 28px 24px; }
+            .content-card { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-mark"><i class="fas fa-building"></i></div>
+                <span class="logo-name">VivaCondo <span>/ App</span></span>
+            </a>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Voltar ao site
+            </a>
+        </div>
+    </header>
+
+    <div class="page-wrap">
+        <div class="page-header">
+            <div class="page-header-label"><i class="fas fa-file-contract"></i> Legal</div>
+            <h1>Termos de Uso</h1>
+            <p>Ao utilizar o VivaCondo, você concorda com as condições estabelecidas neste documento. Leia com atenção.</p>
+        </div>
+
+        <div class="content-card">
+            <div class="section-block">
+                <h2><span class="num">1</span> Aceitação dos Termos</h2>
+                <p>Ao acessar o VivaCondo, você concorda integralmente com as condições aqui estabelecidas. Este sistema é uma ferramenta de auxílio à gestão condominial, desenvolvida para facilitar a comunicação entre moradores e administração.</p>
+            </div>
+
+            <div class="section-block">
+                <h2><span class="num">2</span> Cadastro e Acesso</h2>
+                <p>O acesso é restrito a moradores, proprietários e funcionários autorizados pela administração do condomínio. Você é responsável por manter a confidencialidade de sua senha e por todas as atividades realizadas em sua conta.</p>
+            </div>
+
+            <div class="section-block">
+                <h2><span class="num">3</span> Regras de Conduta</h2>
+                <p>Ao utilizar as ferramentas de mural de avisos, classificados ou chat, o usuário compromete-se a:</p>
+                <ul>
+                    <li>Manter o respeito e a urbanidade com os demais moradores</li>
+                    <li>Não divulgar conteúdos ofensivos, ilegais ou publicitários sem autorização</li>
+                    <li>Utilizar o sistema estritamente para assuntos relacionados ao condomínio</li>
+                </ul>
+            </div>
+
+            <div class="section-block">
+                <h2><span class="num">4</span> Reservas de Áreas Comuns</h2>
+                <p>O uso do sistema para reservas deve seguir o Regimento Interno do condomínio. O cancelamento deve ser feito com a antecedência prevista nas normas internas. O não comparecimento poderá acarretar restrições de uso.</p>
+            </div>
+
+            <div class="section-block">
+                <h2><span class="num">5</span> Limitação de Responsabilidade</h2>
+                <p>O VivaCondo busca manter o sistema operando 24 horas por dia, 7 dias por semana, mas não se responsabiliza por interrupções temporárias decorrentes de falhas na internet, manutenções técnicas necessárias ou eventos de força maior.</p>
+            </div>
+
+            <div class="section-block">
+                <h2><span class="num">6</span> Atualizações</h2>
+                <p>Estes termos podem ser atualizados periodicamente para refletir melhorias no sistema ou mudanças na legislação aplicável. Os usuários serão notificados sobre alterações relevantes através do próprio aplicativo.</p>
+            </div>
+        </div>
+
+        <div class="footer-legal">
+            <p>Leia também a <a href="politicaprivacidade.html">Política de Privacidade</a> &nbsp;·&nbsp; <a href="index.html">Voltar ao site</a></p>
+        </div>
+    </div>
+</body>
+</html>
