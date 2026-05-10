@@ -107,7 +107,7 @@
             gap: 2rem;
         }
 
-            nav a {
+            nav > a {
                 text-decoration: none;
                 color: rgba(255,255,255,0.7);
                 font-size: 0.875rem;
@@ -115,9 +115,204 @@
                 transition: color .2s;
             }
 
-                nav a:hover {
+                nav > a:hover {
                     color: #fff;
                 }
+
+        /* ── DROPDOWN LEGAL ── */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.875rem;
+            font-weight: 500;
+            font-family: inherit;
+            transition: color .2s;
+            padding: 0;
+        }
+
+            .nav-dropdown-btn:hover {
+                color: #fff;
+            }
+
+            .nav-dropdown-btn i {
+                font-size: 0.7rem;
+                transition: transform .2s;
+            }
+
+        .nav-dropdown:hover .nav-dropdown-btn i {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            padding-top: 14px;
+            min-width: 220px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-8px);
+            transition: opacity .2s, transform .2s;
+        }
+
+        .nav-dropdown-menu-inner {
+            background: #fff;
+            border-radius: var(--radius-md);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+            padding: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown-menu a {
+            display: flex !important;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            color: var(--text) !important;
+            font-size: 0.875rem !important;
+            font-weight: 500 !important;
+            text-decoration: none;
+            transition: background .15s;
+        }
+
+            .nav-dropdown-menu a:hover {
+                background: var(--bg);
+                color: var(--blue) !important;
+            }
+
+            .nav-dropdown-menu a i {
+                width: 28px;
+                height: 28px;
+                background: var(--blue-lt);
+                color: var(--blue-md);
+                border-radius: 7px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.75rem;
+            }
+
+        .nav-dropdown-menu .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 6px 0;
+        }
+
+        /* ── HAMBURGER MOBILE ── */
+        .nav-hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            padding: 4px;
+        }
+
+            .nav-hamburger span {
+                display: block;
+                width: 24px;
+                height: 2px;
+                background: rgba(255,255,255,0.85);
+                border-radius: 2px;
+                transition: all .3s;
+            }
+
+            .nav-hamburger.open span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .nav-hamburger.open span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-hamburger.open span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+        /* ── MOBILE MENU ── */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 68px;
+            left: 0;
+            right: 0;
+            background: rgba(20,40,110,0.98);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            z-index: 998;
+            padding: 16px 2rem 24px;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+            .mobile-menu.open {
+                display: flex;
+            }
+
+            .mobile-menu a {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 12px 14px;
+                border-radius: var(--radius-sm);
+                color: rgba(255,255,255,0.75);
+                font-size: 0.95rem;
+                font-weight: 500;
+                text-decoration: none;
+                transition: background .15s, color .15s;
+            }
+
+                .mobile-menu a:hover {
+                    background: rgba(255,255,255,0.08);
+                    color: #fff;
+                }
+
+                .mobile-menu a i {
+                    width: 20px;
+                    text-align: center;
+                    opacity: 0.7;
+                }
+
+            .mobile-menu .mobile-divider {
+                height: 1px;
+                background: rgba(255,255,255,0.08);
+                margin: 8px 0;
+            }
+
+            .mobile-menu .mobile-section-label {
+                font-size: 0.7rem;
+                font-weight: 700;
+                color: rgba(255,255,255,0.35);
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                padding: 4px 14px;
+                margin-top: 4px;
+            }
+
+        .mobile-cta {
+            background: var(--green) !important;
+            color: #fff !important;
+            font-weight: 700 !important;
+            margin-top: 8px;
+            justify-content: center !important;
+        }
 
         .nav-cta {
             background: var(--green);
@@ -862,12 +1057,12 @@
         /* ── RESPONSIVO ── */
         @media (max-width: 768px) {
             nav {
-                gap: 1rem;
+                display: none;
             }
 
-                nav a:not(.nav-cta) {
-                    display: none;
-                }
+            .nav-hamburger {
+                display: flex;
+            }
 
             .hero {
                 padding: 96px 1.5rem 52px;
@@ -1058,10 +1253,58 @@
                 <a href="#recursos">Recursos</a>
                 <a href="#instalar">Como instalar</a>
                 <a href="#suporte">Suporte</a>
-                <a href="https://expo.dev/artifacts/eas/wyVPfGmeSrrip4KHiFR9Vg.apk" class="nav-cta" download><i class="fas fa-download"></i>&ensp;Baixar agora</a>
+                <!-- Dropdown Legal -->
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">
+                        Legal <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <div class="nav-dropdown-menu-inner">
+                            <a href="politicaprivacidade.html"><i class="fas fa-shield-halved"></i> Política de Privacidade</a>
+                            <a href="termodeuso.html"><i class="fas fa-file-lines"></i> Termos de Uso</a>
+                            <div class="divider"></div>
+                            <a href="exclusao-conta.html"><i class="fas fa-user-slash"></i> Exclusão de Conta</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://expo.dev/artifacts/eas/wJ9Kof2rWo2vVN8moeWN5S.apk" class="nav-cta" download><i class="fas fa-download"></i>&ensp;Baixar agora</a>
             </nav>
+            <!-- Hamburger mobile -->
+            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#recursos"><i class="fas fa-star"></i> Recursos</a>
+        <a href="#instalar"><i class="fas fa-mobile-screen"></i> Como instalar</a>
+        <a href="#suporte"><i class="fas fa-headset"></i> Suporte</a>
+        <div class="mobile-divider"></div>
+        <div class="mobile-section-label">Legal</div>
+        <a href="politicaprivacidade.html"><i class="fas fa-shield-halved"></i> Política de Privacidade</a>
+        <a href="termodeuso.html"><i class="fas fa-file-lines"></i> Termos de Uso</a>
+        <a href="exclusao-conta.html"><i class="fas fa-user-slash"></i> Exclusão de Conta</a>
+        <div class="mobile-divider"></div>
+        <a href="https://expo.dev/artifacts/eas/wJ9Kof2rWo2vVN8moeWN5S.apk" class="mobile-cta" download><i class="fas fa-download"></i> Baixar agora</a>
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+        // Fechar menu ao clicar em link
+        mobileMenu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+            });
+        });
+    </script>
 
     <!-- HERO -->
     <section class="hero">
@@ -1073,7 +1316,7 @@
             <h1>Viva melhor,<br><em>viva conectado.</em></h1>
             <p>Comunicados, reservas, portaria, encomendas e muito mais — tudo na palma da mão. Simples para quem usa, poderoso para quem administra.</p>
             <div class="hero-actions">
-                <a href="https://expo.dev/artifacts/eas/wyVPfGmeSrrip4KHiFR9Vg.apk" class="btn-primary" download>
+                <a href="https://expo.dev/artifacts/eas/wJ9Kof2rWo2vVN8moeWN5S.apk" class="btn-primary" download>
                     <i class="fas fa-download"></i>
                     Baixar VivaCondo
                 </a>
@@ -1318,7 +1561,7 @@
                     </li>
                 </ul>
 
-                <a href="https://expo.dev/artifacts/eas/wyVPfGmeSrrip4KHiFR9Vg.apk" class="btn-download" download>
+                <a href="https://expo.dev/artifacts/eas/wJ9Kof2rWo2vVN8moeWN5S.apk" class="btn-download" download>
                     <i class="fas fa-file-download"></i>
                     Baixar VivaCondo.apk
                 </a>
@@ -1393,6 +1636,7 @@
                     <ul>
                         <li><a href="politicaprivacidade.html">Política de Privacidade</a></li>
                         <li><a href="termodeuso.html">Termos de Uso</a></li>
+                        <li><a href="exclusao-conta.html">Exclusão de Conta</a></li>
                     </ul>
                 </div>
             </div>

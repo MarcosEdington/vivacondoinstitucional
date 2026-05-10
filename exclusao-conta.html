@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusão de Conta — VivaCondo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --blue: #1E3A8A;
+            --blue-md: #2563EB;
+            --blue-lt: #EFF6FF;
+            --green: #059669;
+            --green-lt: #ECFDF5;
+            --red: #DC2626;
+            --red-lt: #FEF2F2;
+            --bg: #F1F5F9;
+            --surface: #FFFFFF;
+            --text: #1E293B;
+            --muted: #64748B;
+            --border: #E2E8F0;
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAVBAR */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 999;
+            background: rgba(30,58,138,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .nav-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo-mark {
+            width: 38px; height: 38px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; color: #fff;
+        }
+        .logo-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        /* HERO */
+        .page-hero {
+            background: var(--blue);
+            padding: 120px 2rem 60px;
+            text-align: center;
+        }
+        .page-hero .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(220,38,38,0.2);
+            border: 1px solid rgba(220,38,38,0.3);
+            color: #FCA5A5;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .page-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+        .page-hero p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.65);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* CONTENT */
+        .content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 60px 2rem 80px;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 40px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        .card-title .icon {
+            width: 40px; height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+        }
+        .icon-red { background: var(--red-lt); color: var(--red); }
+        .icon-blue { background: var(--blue-lt); color: var(--blue-md); }
+        .icon-green { background: var(--green-lt); color: var(--green); }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        .card p:last-child { margin-bottom: 0; }
+
+        .steps {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 4px;
+        }
+        .steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+        .step-num {
+            min-width: 28px; height: 28px;
+            background: var(--blue-lt);
+            color: var(--blue-md);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 800;
+            margin-top: 1px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+        .data-table th {
+            text-align: left;
+            padding: 10px 14px;
+            background: var(--bg);
+            color: var(--muted);
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .data-table td {
+            padding: 12px 14px;
+            border-top: 1px solid var(--border);
+            color: var(--text);
+        }
+        .badge-del {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .badge-del.deleted { background: var(--red-lt); color: var(--red); }
+        .badge-del.kept { background: var(--blue-lt); color: var(--blue-md); }
+
+        /* EMAIL CTA */
+        .email-box {
+            background: var(--blue);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .email-box h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .email-box p {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+        .btn-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            color: var(--blue);
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .btn-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .warning-box {
+            background: var(--red-lt);
+            border: 1px solid #FECACA;
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-top: 16px;
+        }
+        .warning-box i { color: var(--red); margin-top: 3px; }
+        .warning-box p { color: #7F1D1D; font-size: 0.88rem; margin: 0; }
+
+        /* FOOTER */
+        footer {
+            background: var(--blue);
+            color: rgba(255,255,255,0.55);
+            padding: 48px 2rem 32px;
+        }
+        .footer-inner { max-width: 1160px; margin: 0 auto; }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.55);
+            font-size: 0.72rem;
+            padding: 5px 12px;
+            border-radius: 50px;
+        }
+        .footer-badge i { color: #34D399; }
+
+        @media (max-width: 768px) {
+            .card { padding: 28px 22px; }
+            .email-box { padding: 32px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-mark"><i class="fas fa-building"></i></div>
+                <span class="logo-name">VivaCondo</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <div class="badge"><i class="fas fa-user-slash"></i> Exclusão de Conta</div>
+        <h1>Solicitar Exclusão de Conta</h1>
+        <p>Entendemos sua decisão. Veja abaixo como solicitar a exclusão da sua conta e o que acontece com seus dados.</p>
+    </div>
+
+    <div class="content">
+
+        <!-- Como solicitar -->
+        <div class="card">
+            <div class="card-title">
+                <div class="icon icon-blue"><i class="fas fa-envelope"></i></div>
+                Como solicitar a exclusão
+            </div>
+            <p>No momento, a exclusão de conta é realizada mediante solicitação por e-mail ao suporte do VivaCondo. Siga os passos abaixo:</p>
+            <ul class="steps">
+                <li>
+                    <div class="step-num">1</div>
+                    Envie um e-mail para <strong>vivacondo.oficial@gmail.com</strong> com o assunto <strong>"Exclusão de Conta"</strong>.
+                </li>
+                <li>
+                    <div class="step-num">2</div>
+                    Informe o nome completo e o e-mail cadastrado na sua conta no VivaCondo.
+                </li>
+                <li>
+                    <div class="step-num">3</div>
+                    Nossa equipe processará sua solicitação em até <strong>7 dias úteis</strong> e confirmará a exclusão por e-mail.
+                </li>
+            </ul>
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>A exclusão da conta é irreversível. Após a confirmação, não será possível recuperar os dados associados à conta.</p>
+            </div>
+        </div>
+
+        <!-- Dados excluídos -->
+        <div class="card">
+            <div class="card-title">
+                <div class="icon icon-red"><i class="fas fa-database"></i></div>
+                O que acontece com seus dados
+            </div>
+            <p>Veja abaixo quais dados são excluídos e quais podem ser mantidos por obrigações legais:</p>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Tipo de dado</th>
+                        <th>Situação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nome e e-mail de cadastro</td>
+                        <td><span class="badge-del deleted">Excluído</span></td>
+                    </tr>
+                    <tr>
+                        <td>Anúncios e classificados publicados</td>
+                        <td><span class="badge-del deleted">Excluído</span></td>
+                    </tr>
+                    <tr>
+                        <td>Mensagens e comunicações internas</td>
+                        <td><span class="badge-del deleted">Excluído</span></td>
+                    </tr>
+                    <tr>
+                        <td>Histórico financeiro (taxas, pagamentos)</td>
+                        <td><span class="badge-del kept">Mantido por 5 anos (obrigação legal)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Registros de acesso (portaria)</td>
+                        <td><span class="badge-del kept">Mantido por 1 ano (segurança)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Botão de e-mail -->
+        <div class="email-box">
+            <h3>Pronto para solicitar?</h3>
+            <p>Envie sua solicitação diretamente pelo e-mail abaixo. Nossa equipe responderá em até 7 dias úteis.</p>
+            <a href="mailto:vivacondo.oficial@gmail.com?subject=Exclusão de Conta&body=Olá, gostaria de solicitar a exclusão da minha conta no VivaCondo.%0A%0ANome completo: %0AE-mail cadastrado: " class="btn-email">
+                <i class="fas fa-envelope"></i>
+                vivacondo.oficial@gmail.com
+            </a>
+        </div>
+
+        <!-- Dúvidas -->
+        <div class="card">
+            <div class="card-title">
+                <div class="icon icon-green"><i class="fas fa-circle-question"></i></div>
+                Dúvidas?
+            </div>
+            <p>Se tiver qualquer dúvida sobre o processo de exclusão ou sobre seus dados, entre em contato com nossa equipe de suporte pelo e-mail <strong>vivacondo.oficial@gmail.com</strong>. Estamos aqui para ajudar.</p>
+            <p>Para mais informações sobre como tratamos seus dados, consulte nossa <a href="politicaprivacidade.html" style="color: var(--blue-md); font-weight: 600;">Política de Privacidade</a>.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-bottom">
+                <p>&copy; 2025 VivaCondo. Todos os direitos reservados.</p>
+                <div class="footer-badge">
+                    <i class="fas fa-circle"></i>
+                    Site oficial e seguro
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
